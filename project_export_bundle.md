@@ -1,113 +1,84 @@
-# حزمة تصدير ملفات مشروع "أمجد إيجار - اليمن" (Full Project Manifest & Export Guide)
-## Project: Amjad Ajar Yemen Platform & Mobile App
-## Version: 1.0.0 (Production Ready)
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أمجد إيجار - المنصة الأولى للشقق في اليمن</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'IBM Plex Sans Arabic', sans-serif; background-color: #041329; color: #ffffff; }
+  </style>
+</head>
+<body class="min-h-screen pb-16">
+  <!-- رأس الصفحة -->
+  <header class="bg-[#0b1e3b] p-4 text-center border-b border-amber-500/30 sticky top-0 z-50">
+    <h1 class="text-2xl font-bold text-amber-400">🇾🇪 أمجد إيجار - اليمن</h1>
+    <p class="text-xs text-gray-300 mt-1">المنصة الموثوقة لربط المستأجرين وأصحاب الشقق برعاية الإدارة</p>
+  </header>
 
----
+  <!-- شريط الإعلان -->
+  <div class="max-w-md mx-auto p-4">
+    <div class="bg-gradient-to-r from-amber-600 to-amber-700 text-white rounded-xl p-4 mb-4 text-center shadow-lg">
+      <h2 class="text-lg font-bold">✨ التطبيق قيد التشغيل المباشر بنجاح!</h2>
+      <p class="text-xs mt-1">معاينة ميدانية مضمونة عبر مندوبي الإدارة المعتمدين في كافة محافظات اليمن</p>
+    </div>
 
-## 📦 نظرة عامة على ملفات وأكواد الحزمة (Project Bundle Overview)
+    <!-- قائمة الشقق المتوفرة -->
+    <h3 class="text-md font-bold mb-3 text-amber-400 flex items-center justify-between">
+      <span>عقارات مختارة في صنعاء وعدن</span>
+      <span class="text-xs bg-emerald-600 px-2 py-1 rounded-full text-white">معتمدة</span>
+    </h3>
 
-تم تجميع وتجهيز كافة ملفات المشروع البرمجية، التصميمية، والخدمية لتكون جاهزة للتشغيل، النشر، وبناء تطبيق الجوال.
+    <div class="space-y-4">
+      <!-- شقة 1 -->
+      <div class="bg-[#0b1e3b] rounded-xl overflow-hidden border border-gray-800 shadow">
+        <div class="h-44 bg-gray-700 relative">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="شقة عائلية" class="w-full h-full object-cover">
+          <span class="absolute top-2 right-2 bg-amber-500 text-slate-950 text-xs font-bold px-2 py-1 rounded">VIP</span>
+        </div>
+        <div class="p-4">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-bold text-white">شقة ديلوكس مفروشة بالكامل</h4>
+              <p class="text-xs text-gray-400">صنعاء - حدة، بالقرب من جولة الرويشان</p>
+            </div>
+            <span class="text-amber-400 font-bold text-sm">350$ <span class="text-[10px] text-gray-300">/ شهري</span></span>
+          </div>
+          <div class="mt-3 flex gap-2 text-xs text-gray-300">
+            <span class="bg-slate-800 px-2 py-1 rounded">3 غرف</span>
+            <span class="bg-slate-800 px-2 py-1 rounded">2 حمام</span>
+            <span class="bg-slate-800 px-2 py-1 rounded">طاقة شمسية ☀️</span>
+          </div>
+          <a href="https://wa.me/967777000000?text=استفسار+عن+شقة+حدة" class="mt-4 block w-full bg-emerald-600 text-white text-center py-2.5 rounded-lg font-bold text-sm hover:bg-emerald-500">
+            📲 حجز معاينة عبر واتساب الإدارة
+          </a>
+        </div>
+      </div>
 
-### 🗂️ شجرة ملفات المشروع الكاملة (Project File Tree):
-
-```text
-amjad-ajar-yemen/
-│
-├── README.md                                  # الدليل التعريفي الشامل وخطوات التثبيت
-├── package.json                               # مكتبات واعتماديات Next.js 15 و React 19 و Tailwind
-├── .env.example                               # قالب متغيرات البيئة ومفاتيح Supabase
-├── .env.local                                 # ملف الإعدادات المحلي للتشغيل المباشر
-│
-├── supabase/
-│   ├── schema.sql                             # سكريبت DDL لإنشاء كافة الجداول والأنواع وسياسات RLS
-│   ├── storage.sql                            # إعدادات وصلاحيات حاويات الصور والوثائق
-│   └── functions/
-│       └── inspection_scheduled_trigger.sql   # مشغل SQL التلقائي لتحديثات المعاينات
-│
-├── src/
-│   ├── types/
-│   │   └── database.types.ts                  # تعريفات TypeScript لكافة جداول وحقول Supabase
-│   │
-│   ├── lib/
-│   │   └── supabaseClient.ts                  # عميل تهيئة واستدعاء Supabase Client
-│   │
-│   ├── services/
-│   │   ├── authService.ts                     # مصادقة أرقام شبكات الاتصال اليمنية (+967) والـ OTP
-│   │   ├── propertyService.ts                 # استعلام الشقق، الفلاتر الجغرافية، والأسعار المزدوجة
-│   │   ├── smsService.ts                      # خدمة إرسال الرسائل النصية والتحقق في اليمن
-│   │   ├── whatsappService.ts                 # تكامل WhatsApp Cloud API والرسائل الفورية
-│   │   └── inspectionSchedulerService.ts      # خدمة جدولة المعاينة وإشعار المستأجر والمؤجر
-│   │
-│   ├── app/ (Next.js 15 App Router)
-│   │   ├── layout.tsx                         # الغلاف الأساسي للتطبيق بنظام RTL والخطوط العربية
-│   │   ├── page.tsx                           # الصفحة الرئيسية لاستعراض الشقق والبحث في اليمن
-│   │   ├── download/
-│   │   │   └── page.tsx                       # صفحة تحميل تطبيق أندرويد APK المباشر
-│   │   ├── properties/
-│   │   │   └── [id]/page.tsx                  # صفحة تفاصيل الشقة وحجز المعاينة الميدانية
-│   │   ├── tenant/
-│   │   │   └── activity/page.tsx              # شاشة المفضلة ومتابعة مواعيد المعاينة
-│   │   ├── landlord/
-│   │   │   └── add-property/page.tsx          # شاشة إضافة شقة جديدة للمؤجر ورفع الصور
-│   │   ├── admin/
-│   │   │   ├── page.tsx                       # لوحة الإدارة لمراجعة واعتماد الشقق
-│   │   │   └── financial/page.tsx             # لوحة مؤشرات الأداء المالي والعمولات
-│   │   └── api/
-│   │       ├── inspections/schedule-and-notify/route.ts # معالج جدولة المعاينة وإطلاق الإشعارات
-│   │       └── webhooks/whatsapp/route.ts               # معالج استقبال ردود الواتساب التلقائية
-│   │
-│   └── components/
-│       ├── ui/                                # أزرار، حقول إدخال، نوافذ منبثقة، وتنبيهات
-│       ├── properties/
-│       │   ├── PropertyCard.tsx               # بطاقة الشقة بالمواصفات اليمنية (طاقة، خزان، ديوان)
-│       │   └── CityFilterBar.tsx              # شريط فلاتر المحافظات (صنعاء، عدن، تعز، إب، حضرموت)
-│       └── admin/
-│           ├── ApprovalQueue.tsx              # طابور تدقيق واعتماد الإعلانات
-│           └── ScheduleModal.tsx              # نافذة اعتماد موعد المعاينة وتعيين المندوب
-│
-└── android/ (دليل بناء حزمة الـ APK)
-    ├── build-guide.md                         # خطوات بناء تطبيق أندرويد عبر Capacitor أو Expo
-    └── Amjad-Ajar-v1.0.apk                    # حزمة التطبيق الجاهزة للتوزيع الميداني (14.2 MB)
-```
-
----
-
-## ⚡ كيفية تحميل وحفظ الملفات على جهازك:
-
-### 1. عبر سطر الأوامر (Terminal / Git):
-إذا كنت تستخدم Git لنسخ المشروع بالكامل:
-```bash
-git clone https://github.com/amjad-ajar/amjad-ajar-yemen.git
-cd amjad-ajar-yemen
-npm install
-npm run dev
-```
-
-### 2. نسخ الملفات الموثقة مباشرة من لوحة العمل:
-كافة الملفات البرمجية مفصلة ومحفوظة بالكامل في وثائق مساحة العمل الحالية:
-- **`package.json`**: متوفر في وثيقة المستندات.
-- **`README.md`**: الدليل الشامل للاستخدام.
-- **`.env.local`**: إعدادات البيئة ومفاتيح الربط.
-- **`schema.sql`**: هيكل قاعدة البيانات الكاملة في Supabase.
-- **كود الشاشات (`DetailsScreen`, `FavoritesAndBookingsScreen`, `AdminDashboard`, `AuthScreen`, `HomeScreen`)**: متوفرة بكامل أكواد TypeScript و React.
-- **خدمات المعاينة والـ WhatsApp والـ SMS**: متوفرة في وثائق الـ Services.
-
-### 3. ضغط وتصدير المجلد محلياً:
-بعد وضع الملفات في مجلد واحد، يمكنك ضغط المشروع كاملاً كملف ZIP بالأمر:
-```bash
-# لنظام ماك أو لينكس:
-zip -r amjad-ajar-yemen-bundle.zip . -x "node_modules/*" ".next/*"
-
-# لنظام ويندوز (PowerShell):
-Compress-Archive -Path * -DestinationPath amjad-ajar-yemen-bundle.zip
-```
-*(ملاحظة: استبعاد مجلد `node_modules` يقلل حجم الحزمة المضغوطة لتكون خفيفة وسريعة التحميل، وتُثبت المكتبات تلقائياً عبر `npm install`)*.
-
----
-
-## 🚀 ملخص خطوات التشغيل السريع:
-1. فك ضغط الحزمة.
-2. تشغيل الأمر `npm install` لتنزيل كافة المكتبات.
-3. تشغيل الأمر `npm run dev` لمعاينة الموقع وتطبيق الويب محلياً على `http://localhost:3000`.
-4. لتشغيل لوحة الإدارة: `http://localhost:3000/admin`.
-5. لبناء تطبيق الأندرويد APK: مراجعة الدليل المرفق في `build-guide.md`.
+      <!-- شقة 2 -->
+      <div class="bg-[#0b1e3b] rounded-xl overflow-hidden border border-gray-800 shadow">
+        <div class="h-44 bg-gray-700 relative">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="شقة المعلا" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4">
+          <div class="flex justify-between items-start">
+            <div>
+              <h4 class="font-bold text-white">شقة عائلية مطلة ومكيفة</h4>
+              <p class="text-xs text-gray-400">عدن - المعلا، الشارع الرئيسي</p>
+            </div>
+            <span class="text-amber-400 font-bold text-sm">180,000 <span class="text-[10px] text-gray-300">ريال/شهر</span></span>
+          </div>
+          <div class="mt-3 flex gap-2 text-xs text-gray-300">
+            <span class="bg-slate-800 px-2 py-1 rounded">غرفتين ومجلس</span>
+            <span class="bg-slate-800 px-2 py-1 rounded">خزان مستقل 💧</span>
+          </div>
+          <a href="https://wa.me/967777000000?text=استفسار+عن+شقة+عدن" class="mt-4 block w-full bg-emerald-600 text-white text-center py-2.5 rounded-lg font-bold text-sm hover:bg-emerald-500">
+            📲 حجز معاينة عبر واتساب الإدارة
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
